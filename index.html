@@ -195,7 +195,13 @@
 
   <div class="footer">Beauty Studio App © 2026</div>
 </div>
+<a class="whatsapp-float" href="https://wa.me/526120000000" target="_blank">
+  💬
+</a>
 
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="">
+</div>
 <nav class="bottom-nav">
   <a href="#inicio">Inicio</a>
   <a href="#servicios">Servicios</a>
@@ -226,23 +232,29 @@ window.addEventListener("beforeinstallprompt", (e) => {
 });
 
 installBtn.addEventListener("click", async () => {
-
   if (deferredPrompt) {
-
     deferredPrompt.prompt();
-
     await deferredPrompt.userChoice;
-
     deferredPrompt = null;
-
     installBtn.style.display = "none";
-
   } else {
-
     alert("Para instalar la app:\n\nAndroid:\nChrome → menú ⋮ → Instalar app\n\niPhone:\nSafari → Compartir → Agregar a pantalla de inicio");
-
   }
+});
 
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+  lightboxImg.src = "";
 });
 </script>
 
