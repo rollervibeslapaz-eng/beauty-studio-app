@@ -4,18 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beauty Studio App</title>
-
   <link rel="manifest" href="manifest.json"/>
-
   <meta name="theme-color" content="#f7d7df"/>
 
   <style>
-
     body{
       margin:0;
       font-family:Arial,sans-serif;
       background:#f9f3f5;
       color:#222;
+      padding-bottom:85px;
     }
 
     .container{
@@ -30,6 +28,12 @@
       padding:22px;
       margin-bottom:20px;
       box-shadow:0 8px 24px rgba(0,0,0,.08);
+      animation: fadeUp .6s ease;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
     .logo{
@@ -65,27 +69,25 @@
       background:#111;
     }
 
-    .pink{
-      background:#f2a7bb;
+    .pink{background:#f2a7bb;}
+    .gold{background:#c59b5f;}
+
+    .slider{
+      display:flex;
+      overflow-x:auto;
+      gap:14px;
+      scroll-snap-type:x mandatory;
+      padding-bottom:10px;
+    }
+
+    .slide{
+      min-width:85%;
+      scroll-snap-align:center;
+      background:linear-gradient(135deg,#f2a7bb,#c59b5f);
       color:white;
-    }
-
-    .gold{
-      background:#c59b5f;
-      color:white;
-    }
-
-    h2{
-      margin-top:0;
-      color:#111;
-    }
-
-    ul{
-      padding-left:18px;
-    }
-
-    li{
-      margin:8px 0;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 8px 20px rgba(0,0,0,.12);
     }
 
     .gallery{
@@ -100,41 +102,70 @@
       object-fit:cover;
     }
 
+    .bottom-nav{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:white;
+      display:flex;
+      justify-content:space-around;
+      padding:12px 5px;
+      box-shadow:0 -4px 20px rgba(0,0,0,.12);
+      z-index:999;
+    }
+
+    .bottom-nav a{
+      text-decoration:none;
+      color:#111;
+      font-size:12px;
+      text-align:center;
+      font-weight:bold;
+    }
+
     .footer{
       text-align:center;
       color:#777;
       padding:20px;
       font-size:14px;
     }
-
   </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="card">
-
+  <div class="card" id="inicio">
     <img src="Logo.png" class="logo">
-
     <h1>Beauty Studio</h1>
-
-    <div class="subtitle">
-      APP
-    </div>
-
-    <p style="text-align:center;">
-      Elegancia, belleza y estilo en un solo lugar.
-    </p>
-
+    <div class="subtitle">APP</div>
+    <p style="text-align:center;">Elegancia, belleza y estilo en un solo lugar.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="promos">
+    <h2>Promociones</h2>
 
+    <div class="slider">
+      <div class="slide">
+        <h3>✨ Primera cita</h3>
+        <p>10% de descuento en tu primer servicio.</p>
+      </div>
+
+      <div class="slide">
+        <h3>💅 Gelish</h3>
+        <p>Promoción especial en aplicación de gelish.</p>
+      </div>
+
+      <div class="slide">
+        <h3>👁️ Pestañas</h3>
+        <p>Precio especial en pestañas clásicas y lifting.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="servicios">
     <h2>Servicios</h2>
-
     <ul>
       <li>Uñas acrílicas</li>
       <li>Gelish</li>
@@ -144,81 +175,54 @@
       <li>Lifting</li>
       <li>Cejas</li>
     </ul>
-
   </div>
 
-  <div class="card">
-
+  <div class="card" id="agenda">
     <h2>Agenda tu cita</h2>
-
-    <a class="btn pink" href="https://wa.me/526120000000">
-      WhatsApp
-    </a>
-
+    <a class="btn pink" href="https://wa.me/526120000000">WhatsApp</a>
   </div>
 
-  <div class="card">
-
-    <h2>Promociones</h2>
-
-    <p>
-      ✨ 10% de descuento en tu primera cita.
-    </p>
-
-    <p>
-      ✨ Retoque gratis en servicios seleccionados.
-    </p>
-
-  </div>
-
-  <div class="card">
-
+  <div class="card" id="galeria">
     <h2>Galería</h2>
-
     <div class="gallery">
-
       <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop">
-
     </div>
-
   </div>
 
   <div class="card">
-
     <h2>Redes sociales</h2>
-
-    <a class="btn gold" href="#">
-      Instagram
-    </a>
-
-    <a class="btn" href="#">
-      Facebook
-    </a>
-
-    <a class="btn pink" href="#">
-      TikTok
-    </a>
-
+    <a class="btn gold" href="#">Instagram</a>
+    <a class="btn" href="#">Facebook</a>
+    <a class="btn pink" href="#">TikTok</a>
   </div>
 
   <div class="footer">
-
     Beauty Studio App © 2026
-
   </div>
 
 </div>
 
-<script>
+<nav class="bottom-nav">
+  <a href="#inicio">Inicio</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#promos">Promos</a>
+  <a href="#galeria">Galería</a>
+  <a href="#agenda">Cita</a>
+</nav>
 
+<script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+  navigator.serviceWorker.register("service-worker.js").then(registration => {
+    registration.update();
+  });
+}
+</script>
+
+</body>
+</html>
 }
 
 </script>
