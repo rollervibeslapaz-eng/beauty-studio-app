@@ -1,0 +1,20 @@
+{
+  "name": "Beauty Studio App",
+  "short_name": "Beauty Studio",
+  "description": "App elegante para salón de uñas, pestañas, cejas y servicios de belleza.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f9f3f5",
+  "theme_color": "#f7d7df",
+  "orientation": "portrait",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
