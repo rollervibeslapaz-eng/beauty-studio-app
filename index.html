@@ -54,7 +54,8 @@
     }
 
     .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-    .gallery img{width:100%;border-radius:18px;object-fit:cover;}
+    .gallery img{width:100%;border-radius:18px;object-fit:cover;cursor:pointer;transition:transform .3s ease;}
+    .gallery img:hover{transform:scale(1.03);}
 
     .bottom-nav{
       position:fixed;bottom:0;left:0;right:0;background:white;
@@ -81,53 +82,44 @@
       padding:16px;border:none;border-radius:18px;background:#111;color:white;
       font-weight:bold;font-size:16px;z-index:999;
       box-shadow:0 8px 24px rgba(0,0,0,.2);
-      .whatsapp-float{
-  position:fixed;
-  right:18px;
-  bottom:150px;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#25D366;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  text-decoration:none;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
-  z-index:1000;
-}
-
-.gallery img{
-  cursor:pointer;
-  transition:transform .3s ease;
-}
-
-.gallery img:hover{
-  transform:scale(1.03);
-}
-
-.lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  z-index:10000;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.lightbox img{
-  max-width:100%;
-  max-height:85vh;
-  border-radius:22px;
-}
-
-.lightbox.show{
-  display:flex;
     }
+
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:150px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:#25D366;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      text-decoration:none;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      z-index:1000;
+    }
+
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      z-index:10000;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .lightbox img{
+      max-width:100%;
+      max-height:85vh;
+      border-radius:22px;
+    }
+
+    .lightbox.show{display:flex;}
   </style>
 </head>
 
@@ -141,7 +133,6 @@
 <button id="installBtn" class="install-btn">Instalar app</button>
 
 <div class="container">
-
   <div class="card" id="inicio">
     <img src="Logo.png" class="logo">
     <h1>Beauty Studio</h1>
@@ -195,12 +186,13 @@
 
   <div class="footer">Beauty Studio App © 2026</div>
 </div>
-<a class="whatsapp-float" href="https://wa.me/526120000000" target="_blank">
-</a>
+
+<a class="whatsapp-float" href="https://wa.me/526120000000" target="_blank">💬</a>
 
 <div class="lightbox" id="lightbox">
   <img id="lightboxImg" src="">
 </div>
+
 <nav class="bottom-nav">
   <a href="#inicio">Inicio</a>
   <a href="#servicios">Servicios</a>
@@ -257,7 +249,5 @@ lightbox.addEventListener("click", () => {
 });
 </script>
 
-</body>
-</html>
 </body>
 </html>
