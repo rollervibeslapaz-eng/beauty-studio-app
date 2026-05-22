@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Beauty Studio App</title>
-
+  <title>Beauty Studio Apps</title>
   <link rel="manifest" href="manifest.json"/>
-
-  <meta name="theme-color" content="#f7d7df"/>
+  <meta name="theme-color" content="#000000"/>
 
   <style>
-
     body{
       margin:0;
       font-family:Arial,sans-serif;
-      background:#f9f3f5;
-      color:#222;
+      background:#0b0b0f;
+      color:white;
       padding-bottom:85px;
     }
 
@@ -26,24 +23,18 @@
     }
 
     .card{
-      background:white;
+      background:#17171d;
       border-radius:28px;
       padding:22px;
       margin-bottom:20px;
-      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      box-shadow:0 8px 26px rgba(255,79,163,.18);
+      border:1px solid rgba(255,215,0,.18);
       animation:fadeUp .6s ease;
     }
 
     @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
     }
 
     .logo{
@@ -51,18 +42,23 @@
       display:block;
       margin:0 auto 15px;
       border-radius:24px;
+      box-shadow:0 0 28px rgba(255,215,0,.25);
     }
 
     h1{
       text-align:center;
       margin:0;
       font-size:32px;
-      color:#111;
+      color:#ffd700;
+    }
+
+    h2{
+      color:#ff4fa3;
     }
 
     .subtitle{
       text-align:center;
-      color:#c59b5f;
+      color:#ff7ac2;
       letter-spacing:2px;
       margin-bottom:18px;
     }
@@ -76,15 +72,17 @@
       margin:10px 0;
       font-weight:bold;
       color:white;
-      background:#111;
+      background:linear-gradient(135deg,#ff4fa3,#111,#ffd700);
+      box-shadow:0 8px 18px rgba(255,79,163,.18);
     }
 
     .pink{
-      background:#f2a7bb;
+      background:linear-gradient(135deg,#ff4fa3,#ff7ac2);
     }
 
     .gold{
-      background:#c59b5f;
+      background:linear-gradient(135deg,#ffd700,#ffb700);
+      color:#111;
     }
 
     .slider{
@@ -98,11 +96,12 @@
     .slide{
       min-width:85%;
       scroll-snap-align:center;
-      background:linear-gradient(135deg,#f2a7bb,#c59b5f);
+      background:linear-gradient(135deg,#ff4fa3,#111,#ffd700);
       color:white;
       border-radius:24px;
       padding:22px;
-      box-shadow:0 8px 20px rgba(0,0,0,.12);
+      box-shadow:0 8px 20px rgba(255,215,0,.18);
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .gallery{
@@ -117,6 +116,7 @@
       object-fit:cover;
       cursor:pointer;
       transition:transform .3s ease;
+      border:1px solid rgba(255,215,0,.18);
     }
 
     .gallery img:hover{
@@ -128,17 +128,18 @@
       bottom:0;
       left:0;
       right:0;
-      background:white;
+      background:#111;
       display:flex;
       justify-content:space-around;
       padding:12px 5px;
-      box-shadow:0 -4px 20px rgba(0,0,0,.12);
+      box-shadow:0 -4px 20px rgba(255,79,163,.15);
       z-index:999;
+      border-top:1px solid rgba(255,215,0,.18);
     }
 
     .bottom-nav a{
       text-decoration:none;
-      color:#111;
+      color:#ffd700;
       font-size:12px;
       text-align:center;
       font-weight:bold;
@@ -146,7 +147,7 @@
 
     .footer{
       text-align:center;
-      color:#777;
+      color:#aaa;
       padding:20px;
       font-size:14px;
     }
@@ -154,7 +155,7 @@
     .splash{
       position:fixed;
       inset:0;
-      background:linear-gradient(135deg,#f9f3f5,#f2a7bb);
+      background:linear-gradient(135deg,#000,#ff4fa3,#111);
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -172,10 +173,11 @@
       width:160px;
       border-radius:30px;
       margin-bottom:18px;
+      box-shadow:0 0 35px rgba(255,215,0,.35);
     }
 
     .splash h2{
-      color:#111;
+      color:#ffd700;
       letter-spacing:2px;
     }
 
@@ -188,12 +190,12 @@
       padding:16px;
       border:none;
       border-radius:18px;
-      background:#111;
-      color:white;
+      background:linear-gradient(135deg,#ff4fa3,#ffd700);
+      color:#111;
       font-weight:bold;
       font-size:16px;
       z-index:999;
-      box-shadow:0 8px 24px rgba(0,0,0,.2);
+      box-shadow:0 8px 24px rgba(255,215,0,.25);
     }
 
     .whatsapp-float{
@@ -208,7 +210,7 @@
       align-items:center;
       justify-content:center;
       text-decoration:none;
-      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
       z-index:1000;
       overflow:hidden;
     }
@@ -222,7 +224,7 @@
       display:none;
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.85);
+      background:rgba(0,0,0,.88);
       z-index:10000;
       align-items:center;
       justify-content:center;
@@ -233,278 +235,160 @@
       max-width:100%;
       max-height:85vh;
       border-radius:22px;
+      border:1px solid rgba(255,215,0,.28);
     }
 
     .lightbox.show{
       display:flex;
     }
-
   </style>
-
 </head>
 
 <body>
 
 <div class="splash" id="splash">
-
-  <img src="Logo.png" alt="Beauty Studio App">
-
-  <h2>Beauty Studio App</h2>
-
+  <img src="Logo.png" alt="Beauty Studio Apps">
+  <h2>Beauty Studio Apps</h2>
 </div>
 
 <button id="installBtn" class="install-btn">
-
   Instalar app
-
 </button>
 
 <div class="container">
 
   <div class="card" id="inicio">
-
     <img src="Logo.png" class="logo">
-
-    <h1>Beauty Studio</h1>
-
-    <div class="subtitle">
-
-      APP
-
-    </div>
-
+    <h1>Beauty Studio Apps</h1>
+    <div class="subtitle">Tu app de belleza</div>
     <p style="text-align:center;">
-
-      Elegancia, belleza y estilo en un solo lugar.
-
+      Aplicaciones elegantes, modernas e instalables para salones de uñas, pestañas, cejas, maquillaje y negocios de belleza.
     </p>
-
   </div>
 
   <div class="card" id="promos">
-
     <h2>Promociones</h2>
-
     <div class="slider">
-
       <div class="slide">
-
-        <h3>✨ Primera cita</h3>
-
-        <p>10% de descuento en tu primer servicio.</p>
-
+        <h3>✨ App para tu salón</h3>
+        <p>Haz que tu negocio se vea profesional con una app instalada en Android y iPhone.</p>
       </div>
-
       <div class="slide">
-
-        <h3>💅 Gelish</h3>
-
-        <p>Promoción especial en aplicación de gelish.</p>
-
+        <h3>💅 Catálogo digital</h3>
+        <p>Muestra servicios, precios, promociones y galería de trabajos.</p>
       </div>
-
       <div class="slide">
-
-        <h3>👁️ Pestañas</h3>
-
-        <p>Precio especial en pestañas clásicas y lifting.</p>
-
+        <h3>📲 WhatsApp directo</h3>
+        <p>Permite que tus clientas agenden cita en un solo toque.</p>
       </div>
-
     </div>
-
   </div>
 
   <div class="card" id="servicios">
-
-    <h2>Servicios</h2>
-
+    <h2>Servicios incluidos</h2>
     <ul>
-
-      <li>Uñas acrílicas</li>
-
-      <li>Gelish</li>
-
-      <li>Retoque</li>
-
-      <li>Pestañas clásicas</li>
-
-      <li>Volumen ruso</li>
-
-      <li>Lifting</li>
-
-      <li>Cejas</li>
-
+      <li>App instalable en Android y iPhone</li>
+      <li>Diseño personalizado</li>
+      <li>Catálogo de servicios</li>
+      <li>Galería de trabajos</li>
+      <li>Botón de WhatsApp</li>
+      <li>Promociones</li>
+      <li>Redes sociales</li>
     </ul>
-
   </div>
 
   <div class="card" id="agenda">
-
-    <h2>Agenda tu cita</h2>
-
-    <a class="btn pink" href="https://wa.me/526120000000">
-
-      WhatsApp
-
+    <h2>Solicita información</h2>
+    <a class="btn pink" href="https://wa.me/526120000000" target="_blank">
+      Contactar por WhatsApp
     </a>
-
   </div>
 
   <div class="card" id="galeria">
-
-    <h2>Galería</h2>
-
+    <h2>Galería demo</h2>
     <div class="gallery">
-
       <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800&auto=format&fit=crop">
-
       <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop">
-
     </div>
-
   </div>
 
   <div class="card">
-
     <h2>Redes sociales</h2>
-
-    <a class="btn gold" href="#">
-
-      Instagram
-
-    </a>
-
-    <a class="btn" href="#">
-
-      Facebook
-
-    </a>
-
-    <a class="btn pink" href="#">
-
-      TikTok
-
-    </a>
-
+    <a class="btn gold" href="#">Instagram</a>
+    <a class="btn" href="#">Facebook</a>
+    <a class="btn pink" href="#">TikTok</a>
   </div>
 
   <div class="footer">
-
-    Beauty Studio App © 2026
-
+    Beauty Studio Apps © 2026
   </div>
 
 </div>
 
 <a class="whatsapp-float" href="https://wa.me/526120000000" target="_blank">
-
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-
 </a>
 
 <div class="lightbox" id="lightbox">
-
   <img id="lightboxImg" src="">
-
 </div>
 
 <nav class="bottom-nav">
-
   <a href="#inicio">Inicio</a>
-
   <a href="#servicios">Servicios</a>
-
   <a href="#promos">Promos</a>
-
   <a href="#galeria">Galería</a>
-
-  <a href="#agenda">Cita</a>
-
+  <a href="#agenda">Contacto</a>
 </nav>
 
 <script>
-
 if ("serviceWorker" in navigator) {
-
   navigator.serviceWorker.register("service-worker.js").then(registration => {
-
     registration.update();
-
   });
-
 }
 
 window.addEventListener("load", () => {
-
   setTimeout(() => {
-
     document.getElementById("splash").classList.add("hide");
-
   }, 1400);
-
 });
 
 let deferredPrompt;
-
 const installBtn = document.getElementById("installBtn");
 
 window.addEventListener("beforeinstallprompt", (e) => {
-
   e.preventDefault();
-
   deferredPrompt = e;
-
 });
 
 installBtn.addEventListener("click", async () => {
-
   if (deferredPrompt) {
-
     deferredPrompt.prompt();
-
     await deferredPrompt.userChoice;
-
     deferredPrompt = null;
-
     installBtn.style.display = "none";
-
   } else {
-
     alert("Para instalar la app:\n\nAndroid:\nChrome → menú ⋮ → Instalar app\n\niPhone:\nSafari → Compartir → Agregar a pantalla de inicio");
-
   }
-
 });
 
 const lightbox = document.getElementById("lightbox");
-
 const lightboxImg = document.getElementById("lightboxImg");
 
 document.querySelectorAll(".gallery img").forEach(img => {
-
   img.addEventListener("click", () => {
-
     lightboxImg.src = img.src;
-
     lightbox.classList.add("show");
-
   });
-
 });
 
 lightbox.addEventListener("click", () => {
-
   lightbox.classList.remove("show");
-
   lightboxImg.src = "";
-
 });
-
 </script>
 
 </body>
