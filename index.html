@@ -222,21 +222,21 @@
     }
 
     .install-btn{
-      display:block;
-      position:fixed;
-      bottom:90px;
-      left:20px;
-      right:20px;
-      padding:16px;
-      border:none;
-      border-radius:18px;
-      background:linear-gradient(135deg,#ff4fa3,#ffd700);
-      color:#111;
-      font-weight:bold;
-      font-size:16px;
-      z-index:999;
-      box-shadow:0 8px 24px rgba(255,215,0,.25);
-    }
+  display:none;
+  position:fixed;
+  bottom:90px;
+  left:20px;
+  right:20px;
+  padding:16px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#ff4fa3,#ffd700);
+  color:#111;
+  font-weight:bold;
+  font-size:16px;
+  z-index:999;
+  box-shadow:0 8px 24px rgba(255,215,0,.25);
+}
 
     .whatsapp-float{
       position:fixed;
@@ -448,8 +448,12 @@ const installBtn = document.getElementById("installBtn");
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
+  installBtn.style.display = "block";
 });
 
+if (window.matchMedia("(display-mode: standalone)").matches) {
+  installBtn.style.display = "none";
+}
 installBtn.addEventListener("click", async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
