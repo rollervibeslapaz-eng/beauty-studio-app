@@ -281,6 +281,38 @@
     .lightbox.show{
       display:flex;
     }
+    .lightbox-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:46px;
+  height:46px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:white;
+  font-size:34px;
+  font-weight:bold;
+  z-index:10001;
+}
+
+.prev{left:18px;}
+.next{right:18px;}
+
+.lightbox-close{
+  position:absolute;
+  top:24px;
+  right:24px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:white;
+  font-size:30px;
+  font-weight:bold;
+  z-index:10001;
+}
   </style>
 </head>
 
@@ -383,7 +415,10 @@
 </a>
 
 <div class="lightbox" id="lightbox">
+  <button class="lightbox-btn prev" id="prevBtn">‹</button>
   <img id="lightboxImg" src="">
+  <button class="lightbox-btn next" id="nextBtn">›</button>
+  <button class="lightbox-close" id="closeBtn">×</button>
 </div>
 
 <nav class="bottom-nav">
@@ -428,17 +463,57 @@ installBtn.addEventListener("click", async () => {
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
+const galleryImages = Array.from(document.querySelectorAll(".gallery img"));
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const closeBtn = document.getElementById("closeBtn");
 
-document.querySelectorAll(".gallery img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add("show");
-  });
-});
+let currentImageIndex = 0;
 
-lightbox.addEventListener("click", () => {
+function openLightbox(index) {
+  currentImageIndex = index;
+  lightboxImg.src = galleryImages[currentImageIndex].src;
+  lightbox.classList.add("show");
+}
+
+function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentImageIndex].src;
+}
+
+function showPrevImage() {
+  currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentImageIndex].src;
+}
+
+function closeLightbox() {
   lightbox.classList.remove("show");
   lightboxImg.src = "";
+}
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener("click", () => openLightbox(index));
+});
+
+nextBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  showNextImage();
+});
+
+prevBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  showPrevImage();
+});
+
+closeBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  closeLightbox();
+});
+
+lightbox.addEventListener("click", closeLightbox);
+
+lightboxImg.addEventListener("click", (e) => {
+  e.stopPropagation();
 });
 </script>
 
